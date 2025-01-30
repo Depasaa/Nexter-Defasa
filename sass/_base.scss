@@ -47,20 +47,116 @@ body {
 
 .container {
     display: grid;
-    grid-template-rows: 80vh -webkit-min-content 40vw repeat(3, -webkit-min-content);
-    grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+    grid-template-rows: 80vh min-content minmax(6rem, min-content) 1fr;
     grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(-webkit-min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
-    grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
 
     @media only screen and (max-width: $bp-large) {
         grid-template-rows: 6rem 80vh -webkit-min-content 40vw repeat(3, -webkit-min-content);
-        grid-template-rows: 6rem 80vh min-content 40vw repeat(3, min-content);
         grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(-webkit-min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
-        grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
     }
 
     @media only screen and (max-width: $bp-medium) {
         grid-template-rows: 6rem calc(100vh - 6rem) -webkit-min-content -webkit-min-content 40vw repeat(3, -webkit-min-content);
-        grid-template-rows: 6rem calc(100vh - 6rem)/*min-content min-content min-content repeat(3, min-content)*/;
     }
+}
+
+// Header Styling
+.header {
+  grid-column: full-start / col-end 6;
+  background-image: linear-gradient(rgba(16, 29, 44, 0.9), rgba(16, 29, 44, 0.9)), url(../img/hero.jpeg);
+  background-size: cover;
+  background-position: center;
+  padding: 8rem;
+  padding-top: 4rem;
+  display: grid;
+  grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr;
+  grid-template-columns: minmax(min-content, max-content);
+  grid-row-gap: 1.5rem;
+  justify-content: center;
+}
+
+.header__logo {
+  height: 4rem;
+  justify-self: center;
+  margin-bottom: 3rem; /* Menambah jarak bawah pada logo */
+}
+
+.header__seenon-text {
+  display: grid;
+  grid-template-columns: 1fr max-content 1fr;
+  grid-column-gap: 1.5rem;
+  align-items: center;
+  font-size: 1.6rem;
+  color: #aaa;
+}
+
+.header__seenon-text::before, .header__seenon-text::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background-color: currentColor;
+}
+
+.header__seenon__logos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 3rem;
+  justify-items: center;
+  align-items: center;
+}
+
+.header__seenon__logos img {
+  max-height: 2.5rem;
+  max-width: 100%;
+  -webkit-filter: brightness(70%);
+  filter: brightness(70%);
+}
+
+.header__btn {
+  justify-self: start;
+  align-self: start;
+}
+
+.heading-1, .heading-2, .heading-3, .heading-4 {
+  font-family: $font-display;
+  font-weight: 400;
+}
+
+.heading-1 {
+  color: $color-grey-light-1;
+  font-size: 4.5rem;
+  line-height: 1;
+}
+
+.heading-2 {
+  font-style: italic;
+  font-size: 4rem;
+  line-height: 1;
+}
+
+.heading-2--light {
+  color: $color-grey-light-1;
+}
+
+.heading-2--dark {
+  color: $color-grey-dark-1;
+}
+
+.heading-3 {
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  color: $color-primary;
+  margin-top: 3rem; /* Menambah jarak atas pada heading 3 */
+}
+
+.heading-4 {
+  font-size: 1.9rem;
+}
+
+.heading-4--light {
+  color: $color-grey-light-1;
+}
+
+.heading-4--dark {
+  color: $color-grey-dark-1;
 }
